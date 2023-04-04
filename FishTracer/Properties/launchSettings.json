@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FishTracer": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

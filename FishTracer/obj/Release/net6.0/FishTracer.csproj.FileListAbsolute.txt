@@ -1,0 +1,17 @@
+D:\FishTracer\FishTracer\bin\Release\net6.0\FishTracer.exe
+D:\FishTracer\FishTracer\bin\Release\net6.0\FishTracer.deps.json
+D:\FishTracer\FishTracer\bin\Release\net6.0\FishTracer.runtimeconfig.json
+D:\FishTracer\FishTracer\bin\Release\net6.0\FishTracer.dll
+D:\FishTracer\FishTracer\bin\Release\net6.0\SDL2-CS.dll
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.csproj.AssemblyReference.cache
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.GeneratedMSBuildEditorConfig.editorconfig
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.AssemblyInfoInputs.cache
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.AssemblyInfo.cs
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.csproj.CoreCompileInputs.cache
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.csproj.CopyComplete
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.dll
+D:\FishTracer\FishTracer\obj\Release\net6.0\refint\FishTracer.dll
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.genruntimeconfig.cache
+D:\FishTracer\FishTracer\obj\Release\net6.0\ref\FishTracer.dll
+D:\FishTracer\FishTracer\bin\Release\net6.0\FishTracer.xml
+D:\FishTracer\FishTracer\obj\Release\net6.0\FishTracer.xml

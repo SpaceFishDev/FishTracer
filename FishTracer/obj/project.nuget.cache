@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "iTLUQvvwsax4x7MzvA+P6RicrTzobT7pTwBjaljqn0C3HvcRQT1c9ihTrIbARvbskYEtZeCPxWk6NckMA0FN8w==",
+  "success": true,
+  "projectFilePath": "D:\\FishTracer\\FishTracer\\FishTracer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Liam Gatter\\.nuget\\packages\\sdl2-cs.netcore\\2.0.8\\sdl2-cs.netcore.2.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
