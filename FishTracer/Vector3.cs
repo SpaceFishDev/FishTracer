@@ -6,17 +6,17 @@ namespace FishTracer
 {
     struct Vector3
     {
-        [DllImport("msvcrt.dll")]
-        public static extern double sqrt(double x);
 
         public double[] e = new double[3];
-        public double X { get => e[0]; set { e[0] = value; _lengthSqr = double.NaN; } }
-        public double Y { get => e[1]; set { e[1] = value; _lengthSqr = double.NaN; } }
-        public double Z { get => e[2]; set { e[2] = value; _lengthSqr = double.NaN; } }
+        public double X { get => (e == null) ? 0 : e[0]; set { e[0] = value; _lengthSqr = double.NaN; } }
+        public double Y { get => (e == null) ? 0 : e[1]; set { e[1] = value; _lengthSqr = double.NaN; } }
+        public double Z { get => (e == null) ? 0 : e[2]; set { e[2] = value; _lengthSqr = double.NaN; } }
+        public static bool operator==(Vector3 a, Vector3 b) => a[0] == b[0] && a[1] == b[1] && a[2] == b[2];
+        public static bool operator !=(Vector3 a, Vector3 b) => !(a == b);
         public static Vector3 RandomUnitInSphere()
         {
             Vector3 v3 = new Vector3(Vector3.RandomDouble(-1, 1), Vector3.RandomDouble(-1, 1), Vector3.RandomDouble(-1, 1));
-            return v3.Normalized;
+            return v3;
         }
         public override string ToString()
         {
@@ -112,30 +112,21 @@ namespace FishTracer
         public static Vector3 operator -(Vector3 u, double v) => new Vector3(u.X - v, u.Y - v, u.Z - v);
         public double this[int index]
         {
-            get => e[index];
+            get
+            {
+                if (e == null) 
+                {
+                    e = new double[3] { 0, 0, 0 }; 
+                } 
+                return e[index]; 
+            }
             set => e[index] = value;
         }
+
         public static Random rnd = new Random();
-        public static int RndNum = 0;
-        public static List<double> Randoms;
         public static double RandomDouble(double min = 0, double max = 1)
         {
-            if(Randoms == null)
-            {
-                Randoms = new List<double>(capacity: 10000000);
-                for(int i = 0; i != 10000000; ++i)
-                {
-                    Randoms.Add(rnd.NextDouble());
-                }
-                return Randoms[RndNum++];
-            }
-            if(RndNum < Randoms.Count)
-            {
-                return Randoms[RndNum++];
-            }
-            double d = rnd.NextDouble();
-            ++RndNum;
-            return d * (max - min) + min;
+            return rnd.NextDouble() * (max - min) + min;
         }
         public static Vector3 Random(double min = 0, double max = 1)
         {
@@ -164,8 +155,21 @@ namespace FishTracer
             return r;
         }
         public static double dot(Vector3 v, Vector3 u) => u[0] * v[0] + u[1] * v[1] + u[2] * v[2];
-        public static double cross(Vector3 v, Vector3 u) => u[0] * v[0] - u[1] * v[1] - u[2] * v[2];
+        public static Vector3 cross(Vector3 v, Vector3 u)
+        {
+            Vector3 n = new Vector3();
+            n.X = v.Y * u.Z - v.Z * u.Y;
+            n.Y = v.Z * u.X - v.X * u.Z;
+            n.Z = v.Y * u.Y - v.Y * u.X;
+            return n;
+        }
         public Vector3 Normalized => this / Length;
+        public static Vector3 Refract(Vector3 uv, Vector3 n, double etai_over_etat)
+        {
+            double cos_theta = Math.Min(Vector3.dot(-uv, n), 1.0);
+            Vector3 r_out_perp = etai_over_etat * (uv + cos_theta * n);
+            Vector3 r_out_parallel = -Math.Sqrt(Math.Max(0, 1 - r_out_perp.LengthSqr)) * n;
+            return r_out_perp + r_out_parallel;
+        }
     }
-
 }

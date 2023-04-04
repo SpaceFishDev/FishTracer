@@ -17,6 +17,15 @@ namespace FishTracer
             Direction = direction;
         }
 
+        public Ray(Vector3 p, Vector3? refracted) : this()
+        {
+            P = p;
+            Refracted = refracted;
+        }
+
+        public Vector3 P { get; }
+        public Vector3? Refracted { get; }
+
         public Vector3 At(double t)
         {
             return Position + Direction * t;

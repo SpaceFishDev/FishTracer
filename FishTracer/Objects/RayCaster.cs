@@ -14,6 +14,7 @@
         public double SamplesPerPixel = 100;
         Vector3 Vertical;
         Vector3 Horizontal;
+        Ray usableRay = new Ray(new Vector3(), new Vector3());
         public RayCaster(string Title, double Width, double viewPortWidth, double aspectRatio, double FocalLength)
         {
             AspectRatio = aspectRatio;
@@ -33,30 +34,30 @@
             {
                 double u = (x + Vector3.RandomDouble(0, 1)) / (double)window.Width;
                 double v = (y + Vector3.RandomDouble(0, 1)) / (double)window.Height;
-                Ray r = GetRay(u, v);
-                pix += CastRay(r, World);
+                GetRay(u, v);
+                pix += CastRay(usableRay, World);
             }
             pix.X = Vector3.FastSqrt(pix.X  / SamplesPerPixel);
             pix.Y = Vector3.FastSqrt(pix.Y  / SamplesPerPixel);
             pix.Z = Vector3.FastSqrt(pix.Z  / SamplesPerPixel);
             return pix;
         }
-        public Vector3 CastRay(Ray r, RayObject World, double depth = 40)
+        public Vector3 CastRay(Ray r, RayObject World, double depth = 150)
         {
             if(depth < 0)
             {
-                return new Vector3(0,0,0);
+                return new Vector3(0,0,1);
             }
             HitRecord rec;
             Vector3 color;
-            if (World.RayCollision(ref r, 0, double.PositiveInfinity, out rec))
+            if (World.RayCollision(ref r, 0.0001, double.PositiveInfinity, out rec))
             {
                 Ray scattered;
                 if(rec.material.Scatter(r, rec, out color, out scattered))
                 {
                     return color * CastRay(scattered, World, depth-1);
                 }
-                color = new Vector3(0,0,0);
+                return color;
             }
             else
             {
@@ -67,9 +68,10 @@
             return color;
 
         }
-        public Ray GetRay(double u, double v)
+        public void GetRay(double u, double v)
         {
-            return new Ray(origin, LowerLeft + u*Horizontal + v*Vertical - origin);
+            usableRay.Position = origin;
+            usableRay.Direction = LowerLeft + u*Horizontal + v*Vertical - origin;
         }
     }
 }

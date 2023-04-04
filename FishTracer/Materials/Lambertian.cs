@@ -11,7 +11,7 @@
         }
         public override bool Scatter(Ray ray, HitRecord record, out Vector3 attenuation, out Ray Scattered)
         {
-            Vector3 scatteredDirection = record.normal + Vector3.Random().Normalized;
+            Vector3 scatteredDirection = record.normal + Vector3.Random();
             if (scatteredDirection.NearZero)
             {
                 scatteredDirection = record.normal;

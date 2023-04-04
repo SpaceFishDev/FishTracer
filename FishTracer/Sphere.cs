@@ -29,7 +29,7 @@ namespace FishTracer.RayObjects
             double C = OC.LengthSqr - Radius*Radius;
             double Discriminant = halfB * halfB - a * C;
             if (Discriminant < 0) return false;
-            double sqrtD = Vector3.FastSqrt(Discriminant);
+            double sqrtD = Vector3.FastSqrt(Discriminant );
 
             double root = (-halfB - sqrtD) / a;
             
