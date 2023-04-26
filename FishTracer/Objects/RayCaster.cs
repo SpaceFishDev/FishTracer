@@ -12,7 +12,7 @@
         public Vector3 LowerLeft;
         public Vector3 origin;
         public double FocalLength;
-        public double SamplesPerPixel = 16;
+        public double SamplesPerPixel = 128;
         Vector3 Vertical;
         Vector3 Horizontal;
         Ray usableRay = new Ray(new Vector3(), new Vector3());
@@ -43,7 +43,7 @@
             pix.Z = Vector3.FastSqrt(pix.Z / SamplesPerPixel);
             return pix;
         }
-        public Vector3 CastRay(Ray r, RayObject World, double depth = 16, List<PointLight>? lights = null)
+        public Vector3 CastRay(Ray r, RayObject World, double depth = 128, List<PointLight>? lights = null)
         {
             if(lights == null)
             {

@@ -47,9 +47,9 @@
             var materialRight = new Metal(new Vector3(0.8, 0.7, 0.8), 0.0);
             Dielectric glass = new Dielectric(1.5);
 
-            RayCaster rayCaster = new RayCaster("RC", 400, 4, 16.0 / 9.0, 1);
+            RayCaster rayCaster = new RayCaster("RC", 800, 5, 16.0 / 9.0, 1);
             //World.Add(new Cube(new Vector3(0, 0, -1), 0.5, glass));
-            World.Add(new Sphere(new Vector3(0, 0.5, -1), 0.5, materialCenter));
+            World.Add(new Cube(new Vector3(0, 0.5, -1), 0.5, materialCenter));
             World.Add(new Sphere(new Vector3(-1, 0.5, -1), 0.5, materialLeft));
             World.Add(new Sphere(new Vector3(1, 0.5, -1), 0.5, materialRight));
             World.Add(new Cube(new Vector3(0,-30, -1.0), 60, materialGround));
@@ -85,8 +85,8 @@
                     color = rayCaster.Cast(i, j, World, lights: new List<PointLight>(1) {new PointLight(new Vector3(0,2,-2), new Vector3(1,1,0), 30) });
                     rayCaster.window.PutPixel(i, j, color.Color());
                 });
+                rayCaster.window.Update(true);
             }
-            rayCaster.window.Update(true);
             sw.Stop();
             rayCaster.window.Title = $"Rendering done!";
             
