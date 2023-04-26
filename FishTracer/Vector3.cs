@@ -1,5 +1,7 @@
-﻿using System;
+﻿using FishTracer.RayObjects;
+using System;
 using System.ComponentModel;
+using System.Numerics;
 using System.Runtime.InteropServices;
 
 namespace FishTracer
@@ -8,7 +10,11 @@ namespace FishTracer
     {
 
         public double[] e = new double[3];
-        public double X { get => (e == null) ? 0 : e[0]; set { e[0] = value; _lengthSqr = double.NaN; } }
+        public Vector3 Copy()
+        {
+            return new Vector3(X,Y,Z);
+        }
+        public double X { get => (e == null) ? 0 : e[0]; set { if (e == null) { e = new double[3]{0, 0, 0}; } e[0] = value; _lengthSqr = double.NaN; } }
         public double Y { get => (e == null) ? 0 : e[1]; set { e[1] = value; _lengthSqr = double.NaN; } }
         public double Z { get => (e == null) ? 0 : e[2]; set { e[2] = value; _lengthSqr = double.NaN; } }
         public static bool operator==(Vector3 a, Vector3 b) => a[0] == b[0] && a[1] == b[1] && a[2] == b[2];
@@ -22,6 +28,12 @@ namespace FishTracer
         {
             return $"X = {X}, Y = {Y}, Z = {Z}";
         }
+
+        public Vector3()
+        {
+            e = new double[3] { 0,0,0};
+        }
+
         public Vector3(double x, double y, double z)
         {
             e = new double[3]{x,y,z};
@@ -97,6 +109,17 @@ namespace FishTracer
                 return _lengthSqr;
             }
         }
+        public Vector3 Transform(System.Numerics.Matrix4x4 matrix)
+        {
+            double x = X * matrix.M11 + Y * matrix.M21 + Z * matrix.M31 + matrix.M41;
+            double y = X * matrix.M12 + Y * matrix.M22 + Z * matrix.M32 + matrix.M42;
+            double z = X * matrix.M13 + Y * matrix.M23 + Z * matrix.M33 + matrix.M43;
+            return new Vector3(x, y, z);
+        }
+        public Vector3 TransformNormal(Matrix4x4 matrix)
+        {
+            return Transform(matrix).Normalized;
+        }
         public static Vector3 operator -(Vector3 v) => new Vector3(-v.X, -v.Y, -v.Z);
         public static Vector3 operator +(Vector3 u, Vector3 v) => new Vector3(u.X + v.X, u.Y + v.Y, u.Z + v.Z);
         public static Vector3 operator -(Vector3 u, Vector3 v) => new Vector3(u.X - v.X, u.Y - v.Y, u.Z - v.Z);
@@ -144,7 +167,7 @@ namespace FishTracer
                 bool n = false;
                 foreach(double val in e)
                 {
-                    n |= Math.Abs(val) < s;
+                    n |= Cube.FastAbs(val) < s;
                 }
                 return n;
             }
@@ -164,11 +187,22 @@ namespace FishTracer
             return n;
         }
         public Vector3 Normalized => this / Length;
+        public static Vector3 Blend( Vector3 color, Vector3 backColor, double amount)
+        {
+            double r = (color.X * amount + backColor.X * (1 - amount));
+            double g = (color.Y * amount + backColor.Y * (1 - amount));
+            double b = (color.Z * amount + backColor.Z * (1 - amount));
+            color.e[0] = r; //(r , g , b);
+            color.e[1] = g; //(r , g , b);
+            color.e[2] = b; //(r , g , b);
+            return color;
+        }
         public static Vector3 Refract(Vector3 uv, Vector3 n, double etai_over_etat)
         {
-            double cos_theta = Math.Min(Vector3.dot(-uv, n), 1.0);
+            uv = uv.Normalized;
+            double cos_theta = Math.Max(Vector3.dot(-uv, n), 0.0);
             Vector3 r_out_perp = etai_over_etat * (uv + cos_theta * n);
-            Vector3 r_out_parallel = -Math.Sqrt(Math.Max(0, 1 - r_out_perp.LengthSqr)) * n;
+            Vector3 r_out_parallel = -Vector3.FastSqrt(Math.Max(0.0, 1.0 - r_out_perp.Length * r_out_perp.Length)) * n;
             return r_out_perp + r_out_parallel;
         }
     }

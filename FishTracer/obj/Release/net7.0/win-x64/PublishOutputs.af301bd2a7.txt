@@ -1,0 +1,6 @@
+D:\Publish\FishTracer.exe
+D:\Publish\FishTracer.dll
+D:\Publish\FishTracer.deps.json
+D:\Publish\FishTracer.runtimeconfig.json
+D:\Publish\SDL2-CS.dll
+D:\Publish\FishTracer.xml

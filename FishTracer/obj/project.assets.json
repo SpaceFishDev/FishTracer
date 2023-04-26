@@ -33,7 +33,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Liam Gatter\\.nuget\\packages\\": {}
+    "C:\\Users\\Liam Gatter\\.nuget\\packages\\": {},
+    "C:\\Users\\Liam Gatter\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -44,8 +45,12 @@
       "packagesPath": "C:\\Users\\Liam Gatter\\.nuget\\packages\\",
       "outputPath": "D:\\FishTracer\\FishTracer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Users\\Liam Gatter\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\Liam Gatter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Liam Gatter\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

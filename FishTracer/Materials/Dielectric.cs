@@ -18,7 +18,7 @@
 
             Vector3 unit_direction = ray.Direction.Normalized;
             double cos_theta = Math.Min(Vector3.dot(-unit_direction, record.normal), 1.0);
-            double sin_theta = Math.Sqrt(1.0 - cos_theta * cos_theta);
+            double sin_theta = Vector3.FastSqrt(1.0 - cos_theta * cos_theta);
 
             bool cannot_refract = refraction_ratio * sin_theta > 1.0;
             Vector3 direction;
@@ -30,7 +30,6 @@
             {
                 direction = Vector3.Refract(unit_direction, record.normal, refraction_ratio);
             }
-
             Scattered = new Ray(record.p, direction);
             return true;
         }

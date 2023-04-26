@@ -1,0 +1,115 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "SDL2-CS.NetCore/2.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SDL2-CS.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SDL2-CS.dll": {}
+        }
+      }
+    },
+    "net7.0/win-x64": {
+      "SDL2-CS.NetCore/2.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SDL2-CS.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SDL2-CS.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SDL2-CS.NetCore/2.0.8": {
+      "sha512": "Nn1duzenQyZcFLkiA+hrFkOIB4+c1BbZzNyN2HqPg3+/wyaF2Yxeb8A5pbTmXoifTa3yjcURB+8CRE1GS8BpjA==",
+      "type": "package",
+      "path": "sdl2-cs.netcore/2.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SDL2-CS.dll",
+        "sdl2-cs.netcore.2.0.8.nupkg.sha512",
+        "sdl2-cs.netcore.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "SDL2-CS.NetCore >= 2.0.8"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Liam Gatter\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\FishTracer\\FishTracer\\FishTracer.csproj",
+      "projectName": "FishTracer",
+      "projectPath": "D:\\FishTracer\\FishTracer\\FishTracer.csproj",
+      "packagesPath": "C:\\Users\\Liam Gatter\\.nuget\\packages\\",
+      "outputPath": "D:\\FishTracer\\FishTracer\\obj\\publish\\win-x64\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Liam Gatter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "dependencies": {
+          "SDL2-CS.NetCore": {
+            "target": "Package",
+            "version": "[2.0.8, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
+      }
+    }
+  }
+}

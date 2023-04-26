@@ -7,7 +7,7 @@ namespace FishTracer
         private int _Width;
         private int _Height;
         private string _Title;
-        private byte[] _Pixels;
+        public byte[] _Pixels;
         public int Width 
         { 
             get { return _Width; } 
@@ -39,7 +39,16 @@ namespace FishTracer
                 SDL.SDL_SetWindowTitle(winPtr, _Title);
             }
         }
-        
+        public void PutSquare(int x1, int y1, int x2, int y2, int[] col)
+        {
+            for (int x = x1; x < x2; x++)
+            {
+                for (int y = y1; y < y2; y++)
+                {
+                    PutPixel(x, y, col);
+                }
+            }
+        }
         public void PutPixel(int x, int y, int[] color)
         {
             y = Height - y - 1;

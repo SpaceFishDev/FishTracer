@@ -26,7 +26,7 @@ namespace FishTracer.RayObjects
             Vector3 OC = ray.Position - Center;
             double a = ray.Direction.LengthSqr;
             double halfB = Vector3.dot(OC, ray.Direction);
-            double C = OC.LengthSqr - Radius*Radius;
+            double C = OC.LengthSqr - Radius * Radius;
             double Discriminant = halfB * halfB - a * C;
             if (Discriminant < 0) return false;
             double sqrtD = Vector3.FastSqrt(Discriminant );

@@ -8,7 +8,7 @@ namespace FishTracer.RayObjects
 {
     internal class RayObjectList : RayObject
     {
-        List<RayObject> rayObjects;
+        public List<RayObject> rayObjects;
         public RayObjectList()
         {
             rayObjects = new List<RayObject>();
@@ -27,6 +27,10 @@ namespace FishTracer.RayObjects
             a.Add(b);
             return a;
         }
+        public List<RayObject> GetObjects()
+        {
+            return rayObjects;
+        }
         public override bool RayCollision(ref Ray Ray, double MinT, double MaxT, out HitRecord Record)
         {
             Record = new HitRecord();
@@ -34,7 +38,7 @@ namespace FishTracer.RayObjects
             bool HitAnything = false;
             double closest = MaxT;
 
-            foreach(var obj in rayObjects)
+            foreach(var obj in rayObjects)      
             {
                 if (obj.RayCollision(ref Ray, MinT, closest, out temp))
                 {

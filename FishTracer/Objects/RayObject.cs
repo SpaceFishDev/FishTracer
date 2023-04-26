@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FishTracer.RayObjects
 {
-    class HitRecord
+    struct HitRecord
     {
         public Vector3 p;
         public Vector3 normal;

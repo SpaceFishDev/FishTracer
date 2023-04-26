@@ -1,0 +1,17 @@
+D:\FishTracer\FishTracer\bin\Release\net7.0\win-x64\FishTracer.exe
+D:\FishTracer\FishTracer\bin\Release\net7.0\win-x64\FishTracer.deps.json
+D:\FishTracer\FishTracer\bin\Release\net7.0\win-x64\FishTracer.runtimeconfig.json
+D:\FishTracer\FishTracer\bin\Release\net7.0\win-x64\FishTracer.dll
+D:\FishTracer\FishTracer\bin\Release\net7.0\win-x64\FishTracer.xml
+D:\FishTracer\FishTracer\bin\Release\net7.0\win-x64\SDL2-CS.dll
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.csproj.AssemblyReference.cache
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.GeneratedMSBuildEditorConfig.editorconfig
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.AssemblyInfoInputs.cache
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.AssemblyInfo.cs
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.csproj.CoreCompileInputs.cache
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.csproj.CopyComplete
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.dll
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\refint\FishTracer.dll
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.xml
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\FishTracer.genruntimeconfig.cache
+D:\FishTracer\FishTracer\obj\Release\net7.0\win-x64\ref\FishTracer.dll
